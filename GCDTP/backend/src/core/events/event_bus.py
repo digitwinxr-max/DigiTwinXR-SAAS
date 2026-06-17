@@ -99,6 +99,14 @@ class EventType(str, Enum):
     WORKFLOW_FAILED = "workflow_failed"
     WORKFLOW_CANCELLED = "workflow_cancelled"
     WORKFLOW_RETRIED = "workflow_retried"
+    
+    # Device/MQTT events
+    DEVICE_REGISTERED = "device_registered"
+    DEVICE_CONNECTED = "device_connected"
+    DEVICE_DISCONNECTED = "device_disconnected"
+    MQTT_MESSAGE_RECEIVED = "mqtt_message_received"
+    MQTT_TOPIC_CREATED = "mqtt_topic_created"
+    MQTT_TOPIC_UPDATED = "mqtt_topic_updated"
 
 
 @dataclass
