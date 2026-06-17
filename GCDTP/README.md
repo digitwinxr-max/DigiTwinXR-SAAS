@@ -554,3 +554,4 @@ All significant architectural decisions are documented in the `adr/` folder:
 - ADR-0030: Node-RED Integration Layer
 - ADR-0031: EMQX MQTT Integration Layer
 - ADR-0032: GeoServer Integration Layer
+- ADR-0033: Graph Intelligence Layer (Neo4j)

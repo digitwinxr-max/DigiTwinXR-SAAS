@@ -114,6 +114,12 @@ class EventType(str, Enum):
     LAYER_UPDATED = "layer_updated"
     STYLE_ASSIGNED = "style_assigned"
     SERVICE_REGISTERED = "service_registered"
+    
+    # Graph events
+    GRAPH_SYNC_STARTED = "graph_sync_started"
+    GRAPH_SYNC_COMPLETED = "graph_sync_completed"
+    GRAPH_QUERY_EXECUTED = "graph_query_executed"
+    GRAPH_SNAPSHOT_CREATED = "graph_snapshot_created"
 
 
 @dataclass
