@@ -38,6 +38,15 @@ Each ADR should follow this structure:
 | 0018 | Dependency-Aware Health Propagation | Accepted | 2026-06-17 |
 | 0019 | Scenario Simulation Engine | Accepted | 2026-06-17 |
 | 0020 | Recovery Simulation Engine | Accepted | 2026-06-17 |
+| 0021 | Resilience Analysis Engine | Accepted | 2026-06-17 |
+| 0022 | Network Topology Engine | Accepted | 2026-06-17 |
+| 0023 | Routing, Flow, and Resilience Engines | Accepted | 2026-06-17 |
+| 0024 | Extensible Simulation Architecture | Accepted | 2026-06-17 |
+| 0025 | Operational Timeline Engine | Accepted | 2026-06-17 |
+| 0026 | Work Order Engine | Accepted | 2026-06-17 |
+| 0027 | Document Management Engine | Accepted | 2026-06-17 |
+| 0028 | Identity & Access Management | Accepted | 2026-06-17 |
+| 0029 | Cesium 3D Visualization Layer | Accepted | 2026-06-17 |
 
 ---
 

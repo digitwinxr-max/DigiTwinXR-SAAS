@@ -14,6 +14,7 @@ from .routes.propagation_routes import router as propagation_router
 from .routes.network_health_routes import router as network_health_router
 from .routes.scenario_routes import router as scenario_router
 from .routes.recovery_routes import router as recovery_router
+from .routes.resilience_routes import router as resilience_router
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -45,6 +46,7 @@ app.include_router(propagation_router)
 app.include_router(network_health_router)
 app.include_router(scenario_router)
 app.include_router(recovery_router)
+app.include_router(resilience_router)
 
 
 @app.get("/health")

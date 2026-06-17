@@ -542,3 +542,12 @@ All significant architectural decisions are documented in the `adr/` folder:
 - ADR-0018: Dependency-Aware Health Propagation
 - ADR-0019: Scenario Simulation Engine
 - ADR-0020: Recovery Simulation Engine
+- ADR-0021: Resilience Analysis Engine
+- ADR-0022: Network Topology Engine
+- ADR-0023: Routing, Flow, and Resilience Engines
+- ADR-0024: Extensible Simulation Architecture
+- ADR-0025: Operational Timeline Engine
+- ADR-0026: Work Order Engine
+- ADR-0027: Document Management Engine
+- ADR-0028: Identity & Access Management
+- ADR-0029: Cesium 3D Visualization Layer
