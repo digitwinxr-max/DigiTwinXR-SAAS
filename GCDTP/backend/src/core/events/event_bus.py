@@ -120,6 +120,13 @@ class EventType(str, Enum):
     GRAPH_SYNC_COMPLETED = "graph_sync_completed"
     GRAPH_QUERY_EXECUTED = "graph_query_executed"
     GRAPH_SNAPSHOT_CREATED = "graph_snapshot_created"
+    
+    # Ontology events
+    ONTOLOGY_CLASS_CREATED = "ontology_class_created"
+    ONTOLOGY_UPDATED = "ontology_updated"
+    SEMANTIC_TAG_ASSIGNED = "semantic_tag_assigned"
+    CLASSIFICATION_UPDATED = "classification_updated"
+    ONTOLOGY_SYNC_COMPLETED = "ontology_sync_completed"
 
 
 @dataclass
