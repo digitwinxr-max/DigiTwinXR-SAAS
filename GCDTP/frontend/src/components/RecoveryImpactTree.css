@@ -1,0 +1,163 @@
+.recovery-impact-tree {
+  margin-bottom: 16px;
+}
+
+.tree-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tree-btn {
+  padding: 6px 12px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tree-btn:hover {
+  background: #e2e8f0;
+}
+
+.tree-legend {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #64748b;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.tree-container {
+  padding: 8px 0;
+}
+
+.recovery-node-wrapper {
+  margin: 2px 0;
+}
+
+.recovery-node {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.recovery-node:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.expand-toggle {
+  width: 20px;
+  text-align: center;
+  color: #64748b;
+  font-size: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.expand-toggle.has-children {
+  font-size: 12px;
+}
+
+.no-children {
+  color: transparent;
+}
+
+.node-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.node-name {
+  font-weight: 500;
+  color: #1e293b;
+  flex: 1;
+}
+
+.root-badge {
+  margin-left: 8px;
+  padding: 2px 6px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.health-transition {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.health-transition .before {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.health-transition .arrow {
+  color: #64748b;
+}
+
+.health-transition .after {
+  font-weight: 700;
+}
+
+.improvement-badge {
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 40px;
+  text-align: center;
+}
+
+.risk-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+}
+
+.recovery-children {
+  margin-left: 20px;
+  padding-left: 12px;
+  border-left: 2px dashed #cbd5e1;
+}
+
+.recovery-tree-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: #94a3b8;
+  font-style: italic;
+}

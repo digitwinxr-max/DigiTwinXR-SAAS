@@ -1,0 +1,334 @@
+.geoportal-container {
+  display: flex;
+  height: calc(100vh - 80px);
+  width: 100%;
+}
+
+.geoportal-sidebar {
+  width: 280px;
+  padding: 20px;
+  background: #f8fafc;
+  border-right: 1px solid #e2e8f0;
+  overflow-y: auto;
+}
+
+.geoportal-sidebar h2 {
+  margin: 0 0 4px 0;
+  color: #1e293b;
+}
+
+.geoportal-sidebar .subtitle {
+  margin: 0 0 20px 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.layer-toggles {
+  margin-bottom: 24px;
+}
+
+.layer-toggles h3,
+.summary-cards h3,
+.legend h3 {
+  font-size: 14px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.layer-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.layer-toggle input {
+  display: none;
+}
+
+.toggle-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  opacity: 0.3;
+  transition: opacity 0.2s;
+}
+
+.layer-toggle input:checked + .toggle-indicator {
+  opacity: 1;
+}
+
+.summary-cards {
+  margin-bottom: 24px;
+}
+
+.summary-card {
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-card .card-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1e293b;
+}
+
+.summary-card .card-label {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.summary-card.warning .card-value {
+  color: #eab308;
+}
+
+.summary-card.critical .card-value {
+  color: #ef4444;
+}
+
+.summary-card.healthy .card-value {
+  color: #22c55e;
+}
+
+.legend {
+  margin-bottom: 24px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 13px;
+  color: #475569;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.legend-color.healthy {
+  background: #22c55e;
+}
+
+.legend-color.degraded {
+  background: #f97316;
+}
+
+.legend-color.critical {
+  background: #ef4444;
+}
+
+.legend-pulse {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid;
+  animation: pulse 2s infinite;
+}
+
+.legend-pulse.warning {
+  border-color: #eab308;
+}
+
+.legend-pulse.critical {
+  border-color: #ef4444;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.refresh-button {
+  width: 100%;
+  padding: 10px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.refresh-button:hover {
+  background: #2563eb;
+}
+
+.geoportal-map {
+  flex: 1;
+  position: relative;
+}
+
+/* Popup styles */
+.asset-popup,
+.event-popup {
+  min-width: 200px;
+}
+
+.asset-popup h3,
+.event-popup h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  color: #1e293b;
+}
+
+.asset-popup .asset-type {
+  margin: 0 0 12px 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.popup-section {
+  margin-bottom: 10px;
+}
+
+.popup-section p {
+  margin: 4px 0;
+  font-size: 13px;
+}
+
+.health-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.health-badge.healthy {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.health-badge.degraded {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.health-badge.critical {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.health-badge.unknown {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.health-badge .score {
+  font-weight: bold;
+}
+
+.event-count {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.event-count.warning {
+  color: #ca8a04;
+}
+
+.event-count.critical {
+  color: #dc2626;
+}
+
+.event-popup .severity {
+  font-weight: bold;
+  font-size: 14px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin: 4px 0;
+}
+
+.event-popup .severity.warning {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.event-popup .severity.critical {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.event-popup .message {
+  font-size: 13px;
+  color: #475569;
+  margin: 8px 0;
+}
+
+.event-popup .timestamp {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* Pulsing marker animation */
+.pulsing-marker {
+  animation: marker-pulse 2s infinite;
+}
+
+.pulsing-marker.warning {
+  --pulse-color: #eab308;
+}
+
+.pulsing-marker.critical {
+  --pulse-color: #ef4444;
+}
+
+@keyframes marker-pulse {
+  0% {
+    stroke-width: 3;
+    opacity: 1;
+  }
+  50% {
+    stroke-width: 6;
+    opacity: 0.5;
+  }
+  100% {
+    stroke-width: 3;
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .geoportal-container {
+    flex-direction: column;
+  }
+  
+  .geoportal-sidebar {
+    width: 100%;
+    height: auto;
+    max-height: 40vh;
+  }
+  
+  .geoportal-map {
+    height: 60vh;
+  }
+}
