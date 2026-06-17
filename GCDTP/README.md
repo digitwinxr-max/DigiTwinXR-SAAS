@@ -556,3 +556,4 @@ All significant architectural decisions are documented in the `adr/` folder:
 - ADR-0032: GeoServer Integration Layer
 - ADR-0033: Graph Intelligence Layer (Neo4j)
 - ADR-0034: Semantic Ontology Layer
+- ADR-0035: Architecture Review & Hardening

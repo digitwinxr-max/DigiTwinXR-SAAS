@@ -52,6 +52,7 @@ Each ADR should follow this structure:
 | 0032 | GeoServer Integration Layer | Accepted | 2026-06-17 |
 | 0033 | Graph Intelligence Layer (Neo4j) | Accepted | 2026-06-17 |
 | 0034 | Semantic Ontology Layer | Accepted | 2026-06-17 |
+| 0035 | Architecture Review & Hardening | Accepted | 2026-06-17 |
 
 ---
 
