@@ -127,6 +127,14 @@ class EventType(str, Enum):
     SEMANTIC_TAG_ASSIGNED = "semantic_tag_assigned"
     CLASSIFICATION_UPDATED = "classification_updated"
     ONTOLOGY_SYNC_COMPLETED = "ontology_sync_completed"
+    
+    # Observability events
+    TRACE_STARTED = "trace_started"
+    TRACE_COMPLETED = "trace_completed"
+    HEALTH_CHECK_EXECUTED = "health_check_executed"
+    DIAGNOSTIC_EVENT_CREATED = "diagnostic_event_created"
+    ERROR_REGISTERED = "error_registered"
+    PERFORMANCE_THRESHOLD_EXCEEDED = "performance_threshold_exceeded"
 
 
 @dataclass
