@@ -47,6 +47,7 @@ Each ADR should follow this structure:
 | 0027 | Document Management Engine | Accepted | 2026-06-17 |
 | 0028 | Identity & Access Management | Accepted | 2026-06-17 |
 | 0029 | Cesium 3D Visualization Layer | Accepted | 2026-06-17 |
+| 0030 | Node-RED Integration Layer | Accepted | 2026-06-17 |
 
 ---
 

@@ -91,6 +91,14 @@ class EventType(str, Enum):
     ORGANIZATION_MEMBER_ADDED = "organization_member_added"
     ORGANIZATION_MEMBER_REMOVED = "organization_member_removed"
     ORGANIZATION_MEMBER_ROLE_CHANGED = "organization_member_role_changed"
+    
+    # Workflow events
+    WORKFLOW_CREATED = "workflow_created"
+    WORKFLOW_STARTED = "workflow_started"
+    WORKFLOW_COMPLETED = "workflow_completed"
+    WORKFLOW_FAILED = "workflow_failed"
+    WORKFLOW_CANCELLED = "workflow_cancelled"
+    WORKFLOW_RETRIED = "workflow_retried"
 
 
 @dataclass
