@@ -107,6 +107,13 @@ class EventType(str, Enum):
     MQTT_MESSAGE_RECEIVED = "mqtt_message_received"
     MQTT_TOPIC_CREATED = "mqtt_topic_created"
     MQTT_TOPIC_UPDATED = "mqtt_topic_updated"
+    
+    # GeoServer events
+    WORKSPACE_CREATED = "workspace_created"
+    LAYER_PUBLISHED = "layer_published"
+    LAYER_UPDATED = "layer_updated"
+    STYLE_ASSIGNED = "style_assigned"
+    SERVICE_REGISTERED = "service_registered"
 
 
 @dataclass

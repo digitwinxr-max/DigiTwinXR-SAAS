@@ -49,6 +49,7 @@ Each ADR should follow this structure:
 | 0029 | Cesium 3D Visualization Layer | Accepted | 2026-06-17 |
 | 0030 | Node-RED Integration Layer | Accepted | 2026-06-17 |
 | 0031 | EMQX MQTT Integration Layer | Accepted | 2026-06-17 |
+| 0032 | GeoServer Integration Layer | Accepted | 2026-06-17 |
 
 ---
 

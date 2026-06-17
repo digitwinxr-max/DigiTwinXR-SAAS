@@ -553,3 +553,4 @@ All significant architectural decisions are documented in the `adr/` folder:
 - ADR-0029: Cesium 3D Visualization Layer
 - ADR-0030: Node-RED Integration Layer
 - ADR-0031: EMQX MQTT Integration Layer
+- ADR-0032: GeoServer Integration Layer
