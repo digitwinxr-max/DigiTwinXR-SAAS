@@ -380,6 +380,21 @@ function GeoPortal() {
                       </button>
                     </div>
 
+                    <div className="popup-section logbook-section">
+                      <button
+                        className="logbook-button"
+                        onClick={() => navigate(`/logbook?entity_type=asset&id=${assetId}`)}
+                      >
+                        📖 View Logbook
+                      </button>
+                      <button
+                        className="note-button"
+                        onClick={() => navigate(`/logbook?new=true&entity_type=asset&id=${assetId}`)}
+                      >
+                        📝 Create Note
+                      </button>
+                    </div>
+
                     {eventCount > 0 && (
                       <div className="popup-section">
                         <strong>Active Events ({eventCount})</strong>

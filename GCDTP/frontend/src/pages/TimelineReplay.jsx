@@ -13,6 +13,7 @@ import {
   playback,
   getSystem
 } from '../api/timeline';
+import { getEntriesByTimeline } from '../api/logbook';
 import './TimelineReplay.css';
 
 export function TimelineReplay() {
@@ -28,6 +29,9 @@ export function TimelineReplay() {
   
   // Selected frame details
   const [selectedFrame, setSelectedFrame] = useState(null);
+  
+  // Logbook entries for current frame
+  const [logbookEntries, setLogbookEntries] = useState([]);
   
   // Loading state
   const [loading, setLoading] = useState(false);
@@ -97,6 +101,26 @@ export function TimelineReplay() {
       setSelectedFrame(frames[currentFrame]);
     }
   }, [currentFrame, frames]);
+
+  // Load logbook entries for current frame
+  useEffect(() => {
+    if (selectedFrame) {
+      loadLogbookEntries();
+    }
+  }, [selectedFrame]);
+
+  const loadLogbookEntries = async () => {
+    if (!selectedFrame?.timestamp) return;
+    
+    try {
+      // Find entries with timeline reference
+      const entries = await getEntriesByTimeline(selectedFrame.timestamp);
+      setLogbookEntries(entries.entries || []);
+    } catch (error) {
+      console.error('Failed to load logbook entries:', error);
+      setLogbookEntries([]);
+    }
+  };
 
   // Playback loop
   useEffect(() => {
@@ -184,7 +208,7 @@ export function TimelineReplay() {
 
         {/* Right Panel - Frame Details */}
         <aside className="replay-sidebar right-panel">
-          <FrameDetails frame={selectedFrame} />
+          <FrameDetails frame={selectedFrame} logbookEntries={logbookEntries} />
         </aside>
       </div>
 
@@ -298,7 +322,7 @@ function FrameCard({ frame, index, isActive, isSelected, onClick }) {
 }
 
 // Frame Details Component
-function FrameDetails({ frame }) {
+function FrameDetails({ frame, logbookEntries = [] }) {
   if (!frame) {
     return (
       <div className="frame-details">
@@ -319,6 +343,23 @@ function FrameDetails({ frame }) {
         <p>{timestamp.toLocaleString()}</p>
         <p className="timestamp-iso">{timestamp.toISOString()}</p>
       </div>
+      
+      {/* Logbook Entries */}
+      {logbookEntries.length > 0 && (
+        <div className="detail-section logbook-entries">
+          <h4>📖 Logbook Entries ({logbookEntries.length})</h4>
+          {logbookEntries.slice(0, 5).map((entry) => (
+            <div key={entry.id} className="logbook-entry-item">
+              <span className={`severity ${entry.severity}`}>{entry.severity}</span>
+              <p className="entry-title">{entry.title}</p>
+              <p className="entry-author">by {entry.author}</p>
+            </div>
+          ))}
+          {logbookEntries.length > 5 && (
+            <p className="more-items">+{logbookEntries.length - 5} more entries</p>
+          )}
+        </div>
+      )}
       
       {frame.events && frame.events.length > 0 && (
         <div className="detail-section">
