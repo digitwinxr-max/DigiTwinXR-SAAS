@@ -170,6 +170,13 @@ class EventType(str, Enum):
     OBJECT_VERSION_CREATED = "object_version_created"
     MULTIPART_UPLOAD_COMPLETED = "multipart_upload_completed"
     RETENTION_POLICY_APPLIED = "retention_policy_applied"
+    
+    # Geospatial events
+    DATASET_REGISTERED = "dataset_registered"
+    RASTER_IMPORTED = "raster_imported"
+    VECTOR_IMPORTED = "vector_imported"
+    ANALYSIS_COMPLETED = "analysis_completed"
+    TRANSFORMATION_EXECUTED = "transformation_executed"
 
 
 @dataclass
