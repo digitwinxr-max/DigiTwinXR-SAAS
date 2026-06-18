@@ -54,6 +54,7 @@ Each ADR should follow this structure:
 | 0034 | Semantic Ontology Layer | Accepted | 2026-06-17 |
 | 0035 | Architecture Review & Hardening | Accepted | 2026-06-17 |
 | 0036 | Observability & Diagnostics Layer | Accepted | 2026-06-17 |
+| 0037 | Performance & Scaling Layer | Accepted | 2026-06-17 |
 
 ---
 

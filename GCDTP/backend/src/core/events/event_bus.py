@@ -135,6 +135,14 @@ class EventType(str, Enum):
     DIAGNOSTIC_EVENT_CREATED = "diagnostic_event_created"
     ERROR_REGISTERED = "error_registered"
     PERFORMANCE_THRESHOLD_EXCEEDED = "performance_threshold_exceeded"
+    
+    # Performance events
+    CACHE_HIT = "cache_hit"
+    CACHE_MISS = "cache_miss"
+    RATE_LIMIT_EXCEEDED = "rate_limit_exceeded"
+    BULK_JOB_STARTED = "bulk_job_started"
+    BULK_JOB_COMPLETED = "bulk_job_completed"
+    API_VERSION_NEGOTIATED = "api_version_negotiated"
 
 
 @dataclass
