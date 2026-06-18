@@ -143,6 +143,16 @@ class EventType(str, Enum):
     BULK_JOB_STARTED = "bulk_job_started"
     BULK_JOB_COMPLETED = "bulk_job_completed"
     API_VERSION_NEGOTIATED = "api_version_negotiated"
+    
+    # DevOps events
+    BACKUP_STARTED = "backup_started"
+    BACKUP_COMPLETED = "backup_completed"
+    RESTORE_STARTED = "restore_started"
+    RESTORE_COMPLETED = "restore_completed"
+    FEATURE_FLAG_CHANGED = "feature_flag_changed"
+    DEPLOYMENT_EXECUTED = "deployment_executed"
+    RELEASE_CREATED = "release_created"
+    DR_PLAN_ACTIVATED = "dr_plan_activated"
 
 
 @dataclass
