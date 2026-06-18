@@ -184,6 +184,13 @@ class EventType(str, Enum):
     STORY_CREATED = "story_created"
     TIMELINE_LAYER_REGISTERED = "timeline_layer_registered"
     VIEW_SHARED = "view_shared"
+    
+    # MapLibre events
+    VECTOR_TILE_LOADED = "vector_tile_loaded"
+    PMTILES_OPENED = "pmtiles_opened"
+    STYLE_CHANGED = "style_changed"
+    OFFLINE_REGION_CREATED = "offline_region_created"
+    CACHE_UPDATED = "cache_updated"
 
 
 @dataclass
