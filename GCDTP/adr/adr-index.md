@@ -69,6 +69,7 @@ Each ADR should follow this structure:
 | 0049 | Knowledge Repository Engine | Accepted | 2026-06-17 |
 | 0050 | Cognitive Copilot Foundation | Accepted | 2026-06-17 |
 | 0051 | RAG Engine | Accepted | 2026-06-17 |
+| 0052 | AI Agent Framework | Accepted | 2026-06-17 |
 
 ---
 

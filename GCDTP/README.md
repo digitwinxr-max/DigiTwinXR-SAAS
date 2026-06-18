@@ -573,3 +573,4 @@ All significant architectural decisions are documented in the `adr/` folder:
 - ADR-0049: Knowledge Repository Engine
 - ADR-0050: Cognitive Copilot Foundation
 - ADR-0051: RAG Engine
+- ADR-0052: AI Agent Framework
