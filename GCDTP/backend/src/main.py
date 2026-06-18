@@ -22,6 +22,7 @@ from .routes.knowledge_routes import router as knowledge_router
 from .routes.copilot_routes import router as copilot_router
 from .routes.rag_routes import router as rag_router
 from .routes.agent_routes import router as agent_router
+from .routes.predictive_routes import router as predictive_router
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -61,6 +62,7 @@ app.include_router(knowledge_router)
 app.include_router(copilot_router)
 app.include_router(rag_router)
 app.include_router(agent_router)
+app.include_router(predictive_router)
 
 
 @app.get("/health")
