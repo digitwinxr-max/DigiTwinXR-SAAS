@@ -17,6 +17,7 @@ from .routes.recovery_routes import router as recovery_router
 from .routes.resilience_routes import router as resilience_router
 from .routes.semantic_routes import router as semantic_router
 from .routes.timeline_routes import router as timeline_router
+from .routes.logbook_routes import router as logbook_router
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -51,6 +52,7 @@ app.include_router(recovery_router)
 app.include_router(resilience_router)
 app.include_router(semantic_router)
 app.include_router(timeline_router)
+app.include_router(logbook_router)
 
 
 @app.get("/health")

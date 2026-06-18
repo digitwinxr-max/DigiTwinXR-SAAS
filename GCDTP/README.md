@@ -569,3 +569,4 @@ All significant architectural decisions are documented in the `adr/` folder:
 - ADR-0045: Kepler.gl Analytics Layer
 - ADR-0046: Unified Semantic Layer
 - ADR-0047: Timeline Replay Engine
+- ADR-0048: Digital Logbook Engine
