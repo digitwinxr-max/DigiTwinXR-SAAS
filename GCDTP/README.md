@@ -561,3 +561,4 @@ All significant architectural decisions are documented in the `adr/` folder:
 - ADR-0037: Performance & Scaling Layer
 - ADR-0038: Deployment & DevOps Layer
 - ADR-0039: Enterprise Packaging Layer
+- ADR-0040: Production Readiness Audit & Certification
