@@ -67,6 +67,7 @@ Each ADR should follow this structure:
 | 0047 | Timeline Replay Engine | Accepted | 2026-06-17 |
 | 0048 | Digital Logbook Engine | Accepted | 2026-06-17 |
 | 0049 | Knowledge Repository Engine | Accepted | 2026-06-17 |
+| 0050 | Cognitive Copilot Foundation | Accepted | 2026-06-17 |
 
 ---
 

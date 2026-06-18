@@ -571,3 +571,4 @@ All significant architectural decisions are documented in the `adr/` folder:
 - ADR-0047: Timeline Replay Engine
 - ADR-0048: Digital Logbook Engine
 - ADR-0049: Knowledge Repository Engine
+- ADR-0050: Cognitive Copilot Foundation
