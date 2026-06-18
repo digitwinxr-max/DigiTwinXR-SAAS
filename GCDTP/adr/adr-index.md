@@ -63,6 +63,7 @@ Each ADR should follow this structure:
 | 0043 | TerriaJS Federation Layer | Accepted | 2026-06-17 |
 | 0044 | MapLibre Vector Tile Layer | Accepted | 2026-06-17 |
 | 0045 | Kepler.gl Analytics Layer | Accepted | 2026-06-17 |
+| 0046 | Unified Semantic Layer | Accepted | 2026-06-17 |
 
 ---
 

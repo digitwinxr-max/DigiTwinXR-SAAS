@@ -11,6 +11,9 @@ from .scenario import Scenario, ScenarioResult
 from .recovery_simulation import RecoverySimulation, RecoveryResult
 from .resilience_analysis import ResilienceAnalysis
 from .resilience_recommendation import ResilienceRecommendation
+from .semantic_entity import SemanticEntity, EntityType
+from .semantic_tag import SemanticTag, TagCategory, TagValues
+from .semantic_relationship import SemanticRelationship, RelationshipType
 
 __all__ = [
     "Asset",
@@ -28,4 +31,11 @@ __all__ = [
     "RecoveryResult",
     "ResilienceAnalysis",
     "ResilienceRecommendation",
+    "SemanticEntity",
+    "EntityType",
+    "SemanticTag",
+    "TagCategory",
+    "TagValues",
+    "SemanticRelationship",
+    "RelationshipType",
 ]

@@ -49,3 +49,25 @@ from .health import (
     HealthRecalculateResponse,
     HealthSummaryResponse,
 )
+
+from .semantic import (
+    SemanticEntityCreate,
+    SemanticEntityUpdate,
+    SemanticEntityResponse,
+    SemanticEntityWithTags,
+    SemanticTagCreate,
+    SemanticTagUpdate,
+    SemanticTagResponse,
+    SemanticRelationshipCreate,
+    SemanticRelationshipUpdate,
+    SemanticRelationshipResponse,
+    SemanticSearchQuery,
+    SemanticSearchResult,
+    SemanticSearchResponse,
+    SemanticContextResponse,
+    SemanticGraphResponse,
+    GraphNode,
+    GraphEdge,
+    TagSummary,
+    TagSummaryResponse,
+)

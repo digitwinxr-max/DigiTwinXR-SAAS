@@ -344,6 +344,27 @@ function GeoPortal() {
                       <p>Sensors: {sensorCount}</p>
                     </div>
 
+                    <div className="popup-section semantic-section">
+                      <strong>Semantic Metadata</strong>
+                      <p className="semantic-category">
+                        Category: <span>{status === 'HEALTHY' ? 'Critical Infrastructure' : status === 'DEGRADED' ? 'Monitored Asset' : 'Alert Asset'}</span>
+                      </p>
+                      <p className="semantic-ontology">
+                        Class: <span>power_grid.{status === 'HEALTHY' ? 'substation' : 'distribution_node'}</span>
+                      </p>
+                      <div className="semantic-tags">
+                        <span className="semantic-tag">power</span>
+                        <span className="semantic-tag">utility</span>
+                        <span className="semantic-tag">{status === 'HEALTHY' ? 'operational' : 'maintenance'}</span>
+                      </div>
+                      <button
+                        className="semantic-button"
+                        onClick={() => navigate(`/semantic?type=asset&id=${assetId}`)}
+                      >
+                        📊 Open Context
+                      </button>
+                    </div>
+
                     <div className="popup-section">
                       <button
                         className="simulate-button"
