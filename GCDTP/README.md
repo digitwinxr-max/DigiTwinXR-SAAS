@@ -562,3 +562,4 @@ All significant architectural decisions are documented in the `adr/` folder:
 - ADR-0038: Deployment & DevOps Layer
 - ADR-0039: Enterprise Packaging Layer
 - ADR-0040: Production Readiness Audit & Certification
+- ADR-0041: Object Storage Layer (MinIO)

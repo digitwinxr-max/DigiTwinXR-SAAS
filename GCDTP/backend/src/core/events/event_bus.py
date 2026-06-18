@@ -161,6 +161,15 @@ class EventType(str, Enum):
     UPGRADE_EXECUTED = "upgrade_executed"
     COMPATIBILITY_VALIDATED = "compatibility_validated"
     LICENSE_REGISTERED = "license_registered"
+    
+    # Storage events
+    OBJECT_UPLOADED = "object_uploaded"
+    OBJECT_DOWNLOADED = "object_downloaded"
+    OBJECT_DELETED = "object_deleted"
+    OBJECT_RESTORED = "object_restored"
+    OBJECT_VERSION_CREATED = "object_version_created"
+    MULTIPART_UPLOAD_COMPLETED = "multipart_upload_completed"
+    RETENTION_POLICY_APPLIED = "retention_policy_applied"
 
 
 @dataclass

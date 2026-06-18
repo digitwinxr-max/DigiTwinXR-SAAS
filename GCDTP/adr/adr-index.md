@@ -58,6 +58,7 @@ Each ADR should follow this structure:
 | 0038 | Deployment & DevOps Layer | Accepted | 2026-06-17 |
 | 0039 | Enterprise Packaging Layer | Accepted | 2026-06-17 |
 | 0040 | Production Readiness Audit & Certification | Accepted | 2026-06-17 |
+| 0041 | Object Storage Layer (MinIO) | Accepted | 2026-06-17 |
 
 ---
 
