@@ -62,6 +62,7 @@ Each ADR should follow this structure:
 | 0042 | Advanced Geospatial Analytics Layer | Accepted | 2026-06-17 |
 | 0043 | TerriaJS Federation Layer | Accepted | 2026-06-17 |
 | 0044 | MapLibre Vector Tile Layer | Accepted | 2026-06-17 |
+| 0045 | Kepler.gl Analytics Layer | Accepted | 2026-06-17 |
 
 ---
 

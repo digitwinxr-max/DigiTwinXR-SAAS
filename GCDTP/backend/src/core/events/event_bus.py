@@ -191,6 +191,13 @@ class EventType(str, Enum):
     STYLE_CHANGED = "style_changed"
     OFFLINE_REGION_CREATED = "offline_region_created"
     CACHE_UPDATED = "cache_updated"
+    
+    # Kepler events
+    HEATMAP_CREATED = "heatmap_created"
+    CLUSTER_GENERATED = "cluster_generated"
+    FLOWMAP_RENDERED = "flowmap_rendered"
+    TRAJECTORY_PLAYBACK_STARTED = "trajectory_playback_started"
+    ANALYTICS_FILTER_APPLIED = "analytics_filter_applied"
 
 
 @dataclass
