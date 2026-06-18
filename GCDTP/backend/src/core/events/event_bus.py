@@ -153,6 +153,14 @@ class EventType(str, Enum):
     DEPLOYMENT_EXECUTED = "deployment_executed"
     RELEASE_CREATED = "release_created"
     DR_PLAN_ACTIVATED = "dr_plan_activated"
+    
+    # Platform events
+    PLATFORM_PACKAGED = "platform_packaged"
+    BUNDLE_CREATED = "bundle_created"
+    INSTALLATION_COMPLETED = "installation_completed"
+    UPGRADE_EXECUTED = "upgrade_executed"
+    COMPATIBILITY_VALIDATED = "compatibility_validated"
+    LICENSE_REGISTERED = "license_registered"
 
 
 @dataclass
