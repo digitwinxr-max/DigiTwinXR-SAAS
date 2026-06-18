@@ -177,6 +177,13 @@ class EventType(str, Enum):
     VECTOR_IMPORTED = "vector_imported"
     ANALYSIS_COMPLETED = "analysis_completed"
     TRANSFORMATION_EXECUTED = "transformation_executed"
+    
+    # Frontend/Terria events
+    CATALOG_CREATED = "catalog_created"
+    DATASET_FEDERATED = "dataset_federated"
+    STORY_CREATED = "story_created"
+    TIMELINE_LAYER_REGISTERED = "timeline_layer_registered"
+    VIEW_SHARED = "view_shared"
 
 
 @dataclass

@@ -564,3 +564,4 @@ All significant architectural decisions are documented in the `adr/` folder:
 - ADR-0040: Production Readiness Audit & Certification
 - ADR-0041: Object Storage Layer (MinIO)
 - ADR-0042: Advanced Geospatial Analytics Layer
+- ADR-0043: TerriaJS Federation Layer
