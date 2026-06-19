@@ -24,6 +24,7 @@ from .routes.rag_routes import router as rag_router
 from .routes.agent_routes import router as agent_router
 from .routes.predictive_routes import router as predictive_router
 from .routes.root_cause_routes import router as root_cause_router
+from .routes.cognitive_routes import router as cognitive_router
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -65,6 +66,7 @@ app.include_router(rag_router)
 app.include_router(agent_router)
 app.include_router(predictive_router)
 app.include_router(root_cause_router)
+app.include_router(cognitive_router)
 
 
 @app.get("/health")
