@@ -17,7 +17,7 @@ from ..schemas.asset_health_dependency import (
     RELATIONSHIP_INFO,
 )
 
-router = APIRouter(prefix="/health", tags=["network-health"])
+router = APIRouter(prefix="/network", tags=["network"])
 
 
 def get_dep_service(db: Session = Depends(get_db)) -> DependencyHealthService:
@@ -59,7 +59,7 @@ def get_health_contributors(
     return contributors
 
 
-@router.get("/network", response_model=NetworkHealthResponse)
+@router.get("/summary", response_model=NetworkHealthResponse)
 def get_network_health(
     service: DependencyHealthService = Depends(get_dep_service),
     health_service: HealthService = Depends(get_health_service),
