@@ -33,6 +33,20 @@ from .ai.memory import router as context_router
 from .ai.reasoning import router as reasoning_router
 from .ai.copilot import router as copilot_ai_router
 
+# Video Intelligence Layer routers
+from .video.frigate import router as frigate_router
+from .video.opencv import router as opencv_router
+from .video.yolo import router as yolo_router
+from .video.deepstream import router as deepstream_router
+
+# Autonomous Cognitive Twin routers
+from .agents import router as agents_router
+from .reasoning import router as reasoning_fusion_router
+from .learning import router as learning_router
+from .simulation import router as simulation_router
+from .prescriptive import router as prescriptive_router
+from .autonomy import router as autonomy_router
+
 # Create database tables
 Base.metadata.create_all(bind=engine)
 
@@ -81,6 +95,20 @@ app.include_router(langgraph_router)
 app.include_router(context_router)
 app.include_router(reasoning_router)
 app.include_router(copilot_ai_router)
+
+# Video Intelligence Layer routers
+app.include_router(frigate_router)
+app.include_router(opencv_router)
+app.include_router(yolo_router)
+app.include_router(deepstream_router)
+
+# Autonomous Cognitive Twin routers
+app.include_router(agents_router)
+app.include_router(reasoning_fusion_router)
+app.include_router(learning_router)
+app.include_router(simulation_router)
+app.include_router(prescriptive_router)
+app.include_router(autonomy_router)
 
 
 @app.get("/health")
