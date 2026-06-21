@@ -78,7 +78,7 @@ CREATE OR REPLACE FUNCTION get_snapshots_in_range(
 )
 RETURNS TABLE (
     id UUID,
-    timestamp TIMESTAMP WITH TIME ZONE,
+    "timestamp" TIMESTAMP WITH TIME ZONE,
     snapshot_type snapshot_type,
     entity_type VARCHAR(100),
     entity_id VARCHAR(255),

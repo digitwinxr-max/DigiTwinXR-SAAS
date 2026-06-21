@@ -117,8 +117,8 @@ SELECT
     AVG(confidence) as avg_confidence,
     MAX(confidence) as max_confidence,
     ARRAY_AGG(DISTINCT analysis_type) as analysis_types,
-    MIN(created_at) as first_analysis,
-    MAX(created_at) as last_analysis
+    MIN(rca.created_at) as first_analysis,
+    MAX(rca.created_at) as last_analysis
 FROM root_cause_analysis rca
 JOIN assets a ON rca.asset_id = a.id
 GROUP BY asset_id, a.name;

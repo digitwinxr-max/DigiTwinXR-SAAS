@@ -5,6 +5,16 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS postgis;
 
+-- Schema migrations tracking table (must be created first)
+CREATE TABLE IF NOT EXISTS schema_migrations (
+    id SERIAL PRIMARY KEY,
+    version VARCHAR(10) NOT NULL UNIQUE,
+    applied_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Insert this migration
+INSERT INTO schema_migrations (version) VALUES ('001') ON CONFLICT (version) DO NOTHING;
+
 CREATE TABLE IF NOT EXISTS assets (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name VARCHAR(255) NOT NULL,

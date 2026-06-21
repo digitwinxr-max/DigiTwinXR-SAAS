@@ -117,7 +117,7 @@ RETURNS TABLE (
     severity log_severity,
     content TEXT,
     author VARCHAR(255),
-    timestamp TIMESTAMP WITH TIME ZONE,
+    "timestamp" TIMESTAMP WITH TIME ZONE,
     timeline_snapshot_id UUID,
     created_at TIMESTAMP WITH TIME ZONE
 ) AS $$
@@ -153,7 +153,7 @@ RETURNS TABLE (
     severity log_severity,
     content TEXT,
     author VARCHAR(255),
-    timestamp TIMESTAMP WITH TIME ZONE
+    "timestamp" TIMESTAMP WITH TIME ZONE
 ) AS $$
 BEGIN
     RETURN QUERY

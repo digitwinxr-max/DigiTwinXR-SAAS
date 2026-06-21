@@ -234,7 +234,7 @@ WITH RECURSIVE class_tree AS (
         c.parent_class_id,
         c.level,
         c.path,
-        ARRAY[c.name] as hierarchy
+        ARRAY[c.name]::text[] as hierarchy
     FROM ontology_classes c
     WHERE c.parent_class_id IS NULL
     
@@ -248,7 +248,7 @@ WITH RECURSIVE class_tree AS (
         c.parent_class_id,
         c.level,
         c.path,
-        ct.hierarchy || c.name
+        ct.hierarchy || ARRAY[c.name]::text[]
     FROM ontology_classes c
     JOIN class_tree ct ON c.parent_class_id = ct.id
 )
@@ -264,7 +264,7 @@ WITH RECURSIVE capability_tree AS (
         cap.display_name,
         cap.parent_capability_id,
         cap.inherited,
-        ARRAY[cap.name] as inheritance_path,
+        ARRAY[cap.name]::text[] as inheritance_path,
         0 as depth
     FROM ontology_capabilities cap
     WHERE cap.parent_capability_id IS NULL
@@ -278,7 +278,7 @@ WITH RECURSIVE capability_tree AS (
         cap.display_name,
         cap.parent_capability_id,
         TRUE as inherited,
-        ct.inheritance_path || cap.name,
+        ct.inheritance_path || ARRAY[cap.name::text],
         ct.depth + 1
     FROM ontology_capabilities cap
     JOIN capability_tree ct ON cap.parent_capability_id = ct.id
