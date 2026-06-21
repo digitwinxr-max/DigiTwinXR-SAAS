@@ -4,7 +4,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
-from ..database import get_db
+from ..database.config import get_db
 from ..services.dependency_health_service import DependencyHealthService
 from ..services.health_service import HealthService
 from ..schemas.asset_health_dependency import (
@@ -67,7 +67,7 @@ def get_network_health(
 ):
     """Get network-wide health summary."""
     from ..models.asset import Asset
-    from ..models.asset_health import AssetHealth
+    from ..models.health import AssetHealth
     
     # Get all assets with health
     assets = health_service.get_all_health_records(limit=10000)[0]

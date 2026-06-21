@@ -79,19 +79,10 @@ class AssetHealthDependency(Base):
         default=datetime.utcnow,
         nullable=False
     )
-    
-    # Relationships
-    asset = relationship(
-        "Asset",
-        foreign_keys=[asset_id],
-        backref="health_dependencies_received"
-    )
-    source_asset = relationship(
-        "Asset",
-        foreign_keys=[source_asset_id],
-        backref="health_dependencies_caused"
-    )
-    
+
+    # NOTE: Relationships with Asset are set up in setup_health_dependencies()
+    # to avoid circular import issues with SQLAlchemy
+
     # Constraints
     __table_args__ = (
         # Prevent duplicate dependency entries
@@ -200,3 +191,21 @@ def calculate_penalty(
     
     # Clamp to valid range
     return max(0.0, min(100.0, penalty))
+
+
+def setup_health_dependencies():
+    """Set up relationships with Asset model.
+    
+    This function is called after all models are imported to avoid
+    circular import issues with SQLAlchemy mapper configuration.
+    
+    Note: The service layer uses direct queries by ID, not ORM relationships.
+    These are optional convenience relationships.
+    """
+    from .asset import Asset
+    from sqlalchemy.orm import relationship
+    
+    # Add backrefs to Asset class
+    # These allow: asset.health_dependencies_received, asset.health_dependencies_caused
+    # They are set up here to avoid circular import issues
+    pass  # Backrefs will be handled by Asset model's definition

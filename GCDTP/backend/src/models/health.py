@@ -4,7 +4,7 @@ from uuid import UUID
 from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, CheckConstraint, Float
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlalchemy.orm import relationship
-from ..database.config import Base
+from .base import Base
 
 
 class AssetHealth(Base):

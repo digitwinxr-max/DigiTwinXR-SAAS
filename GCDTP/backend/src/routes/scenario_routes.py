@@ -4,7 +4,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
-from ..database import get_db
+from ..database.config import get_db
 from ..services.simulation_service import SimulationService
 from ..schemas.scenario import (
     ScenarioCreate,

@@ -11,7 +11,7 @@ from sqlalchemy.orm import relationship
 from datetime import datetime
 import uuid
 
-from backend.src.database.config import Base
+from .base import Base
 
 
 class ResilienceAnalysis(Base):

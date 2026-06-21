@@ -4,7 +4,7 @@ from sqlalchemy import Column, String, Text, Float, DateTime, JSON
 from sqlalchemy.dialects.postgresql import UUID, DOUBLE_PRECISION
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
-from ..database.config import Base
+from .base import Base
 
 # Try to import Geometry, fall back to JSON for non-PostgreSQL databases
 try:

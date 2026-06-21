@@ -1,5 +1,9 @@
 """GCDTP Backend API - Asset, Sensor, Measurement, Threshold, Event & Health Engine."""
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from slowapi import Limiter
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from .database.config import engine, Base
@@ -27,34 +31,45 @@ from .routes.root_cause_routes import router as root_cause_router
 from .routes.cognitive_routes import router as cognitive_router
 
 # AI Intelligence Layer routers
-from .ai.ollama import router as ollama_router
-from .ai.langgraph import router as langgraph_router
-from .ai.memory import router as context_router
-from .ai.reasoning import router as reasoning_router
-from .ai.copilot import router as copilot_ai_router
+from .ai.ollama import ollama_router
+from .ai.langgraph import langgraph_router
+from .ai.memory import context_router
+from .ai.reasoning import reasoning_router
+from .ai.copilot import copilot_router as copilot_ai_router
 
 # Video Intelligence Layer routers
-from .video.frigate import router as frigate_router
-from .video.opencv import router as opencv_router
-from .video.yolo import router as yolo_router
-from .video.deepstream import router as deepstream_router
+from .video.frigate import frigate_router
+from .video.opencv import opencv_router
+from .video.yolo import yolo_router
+from .video.deepstream import deepstream_router
 
 # Autonomous Cognitive Twin routers
-from .agents import router as agents_router
-from .reasoning import router as reasoning_fusion_router
-from .learning import router as learning_router
-from .simulation import router as simulation_router
-from .prescriptive import router as prescriptive_router
-from .autonomy import router as autonomy_router
+from .agents import agents_router
+from .reasoning import reasoning_router
+from .learning import learning_router
+from .simulation import simulation_router
+from .prescriptive import prescriptive_router
+from .autonomy import autonomy_router
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
+
+# Rate limiter
+limiter = Limiter(key_func=get_remote_address)
 
 app = FastAPI(
     title="GCDTP Health Engine",
     description="Asset, Sensor, Measurement, Threshold, Event & Health Engine for GCDTP",
     version="1.0.0",
 )
+
+# Rate limit exceeded handler
+@app.exception_handler(RateLimitExceeded)
+async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
+    return JSONResponse(
+        status_code=429,
+        content={"detail": f"Rate limit exceeded: {exc.detail}"}
+    )
 
 # CORS middleware
 app.add_middleware(
@@ -104,7 +119,6 @@ app.include_router(deepstream_router)
 
 # Autonomous Cognitive Twin routers
 app.include_router(agents_router)
-app.include_router(reasoning_fusion_router)
 app.include_router(learning_router)
 app.include_router(simulation_router)
 app.include_router(prescriptive_router)

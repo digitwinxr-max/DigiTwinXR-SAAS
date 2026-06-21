@@ -4,7 +4,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
-from ..database import get_db
+from ..database.config import get_db
 from ..services.failure_propagation_service import FailurePropagationService
 from ..schemas.propagated_event import (
     PropagatedEventResponse,

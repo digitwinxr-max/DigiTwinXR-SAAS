@@ -9,9 +9,9 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 import uuid
 
-from backend.src.database.config import get_db
-from backend.src.services.resilience_service import ResilienceService
-from backend.src.schemas.resilience import (
+from ..database.config import get_db
+from ..services.resilience_service import ResilienceService
+from ..schemas.resilience import (
     ResilienceAnalysisResponse,
     RecommendationResponse,
     CriticalAssetResponse,
@@ -64,7 +64,7 @@ def analyze_asset(
         raise HTTPException(status_code=404, detail="Asset not found")
     
     # Get recommendations
-    from backend.src.models import ResilienceRecommendation
+    from ..models import ResilienceRecommendation
     recommendations = (
         service.db.query(ResilienceRecommendation)
         .filter(ResilienceRecommendation.analysis_id == analysis.id)
@@ -115,7 +115,7 @@ def analyze_network(
     critical_assets = service.get_top_critical_assets(limit=10)
     
     # Get recommendations by priority
-    from backend.src.models import ResilienceRecommendation
+    from ..models import ResilienceRecommendation
     recommendations = service.db.query(ResilienceRecommendation).all()
     
     by_priority = {}
@@ -171,7 +171,7 @@ def get_asset_resilience(
     except ValueError:
         raise HTTPException(status_code=400, detail="Invalid asset ID format")
     
-    from backend.src.models import ResilienceAnalysis, ResilienceRecommendation
+    from ..models import ResilienceAnalysis, ResilienceRecommendation
     
     analysis = (
         service.db.query(ResilienceAnalysis)
@@ -261,7 +261,7 @@ def get_network_resilience(
     
     critical_assets = service.get_top_critical_assets(limit=10)
     
-    from backend.src.models import ResilienceRecommendation
+    from ..models import ResilienceRecommendation
     recommendations = service.db.query(ResilienceRecommendation).all()
     
     by_priority = {}
@@ -312,7 +312,7 @@ def get_recommendations(
     except ValueError:
         raise HTTPException(status_code=400, detail="Invalid analysis ID format")
     
-    from backend.src.models import ResilienceRecommendation
+    from ..models import ResilienceRecommendation
     
     query = service.db.query(ResilienceRecommendation).filter(
         ResilienceRecommendation.analysis_id == analysis_uuid

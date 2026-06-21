@@ -4,7 +4,7 @@ from sqlalchemy import Column, String, Text, DateTime, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
-from ..database.config import Base
+from .base import Base
 
 
 class Sensor(Base):

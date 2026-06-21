@@ -76,23 +76,6 @@ class PropagatedEvent(Base):
         nullable=False
     )
     
-    # Relationships
-    source_event = relationship(
-        "Event",
-        foreign_keys=[source_event_id],
-        backref="propagated_events"
-    )
-    source_asset = relationship(
-        "Asset",
-        foreign_keys=[source_asset_id],
-        backref="triggered_propagations"
-    )
-    affected_asset = relationship(
-        "Asset",
-        foreign_keys=[affected_asset_id],
-        backref="affected_by_propagations"
-    )
-    
     # Constraints
     __table_args__ = (
         # Prevent duplicate propagation records
@@ -129,3 +112,53 @@ class PropagatedEvent(Base):
             PropagationType.DOWNSTREAM_FAILURE,
             PropagationType.DEPENDENCY_IMPACT,
         )
+
+
+def deferred_setup_propagated_events():
+    """Set up relationships for PropagatedEvent model.
+    
+    This function is called after all models are imported to avoid
+    circular import issues with SQLAlchemy mapper configuration.
+    """
+    from .event import Event
+    from .asset import Asset
+    from sqlalchemy.orm import relationship
+    
+    # Set up source_event relationship
+    PropagatedEvent.source_event = relationship(
+        Event,
+        foreign_keys=[PropagatedEvent.source_event_id],
+        back_populates="propagated_events"
+    )
+    Event.propagated_events = relationship(
+        PropagatedEvent,
+        foreign_keys=[PropagatedEvent.source_event_id],
+        back_populates="source_event",
+        cascade="all, delete-orphan"
+    )
+    
+    # Set up source_asset relationship
+    PropagatedEvent.source_asset = relationship(
+        Asset,
+        foreign_keys=[PropagatedEvent.source_asset_id],
+        back_populates="triggered_propagations"
+    )
+    Asset.triggered_propagations = relationship(
+        PropagatedEvent,
+        foreign_keys=[PropagatedEvent.source_asset_id],
+        back_populates="source_asset",
+        cascade="all, delete-orphan"
+    )
+    
+    # Set up affected_asset relationship
+    PropagatedEvent.affected_asset = relationship(
+        Asset,
+        foreign_keys=[PropagatedEvent.affected_asset_id],
+        back_populates="affected_by_propagations"
+    )
+    Asset.affected_by_propagations = relationship(
+        PropagatedEvent,
+        foreign_keys=[PropagatedEvent.affected_asset_id],
+        back_populates="affected_asset",
+        cascade="all, delete-orphan"
+    )
