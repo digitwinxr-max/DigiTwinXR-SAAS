@@ -26,6 +26,13 @@ from .routes.predictive_routes import router as predictive_router
 from .routes.root_cause_routes import router as root_cause_router
 from .routes.cognitive_routes import router as cognitive_router
 
+# AI Intelligence Layer routers
+from .ai.ollama import router as ollama_router
+from .ai.langgraph import router as langgraph_router
+from .ai.memory import router as context_router
+from .ai.reasoning import router as reasoning_router
+from .ai.copilot import router as copilot_ai_router
+
 # Create database tables
 Base.metadata.create_all(bind=engine)
 
@@ -67,6 +74,13 @@ app.include_router(agent_router)
 app.include_router(predictive_router)
 app.include_router(root_cause_router)
 app.include_router(cognitive_router)
+
+# AI Intelligence Layer routers
+app.include_router(ollama_router)
+app.include_router(langgraph_router)
+app.include_router(context_router)
+app.include_router(reasoning_router)
+app.include_router(copilot_ai_router)
 
 
 @app.get("/health")
