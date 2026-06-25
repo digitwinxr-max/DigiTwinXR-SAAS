@@ -1,4 +1,6 @@
 """GCDTP Backend API - Asset, Sensor, Measurement, Threshold, Event & Health Engine."""
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, Request
 from slowapi import Limiter
 from slowapi.util import get_remote_address
@@ -29,6 +31,7 @@ from .routes.agent_routes import router as agent_router
 from .routes.predictive_routes import router as predictive_router
 from .routes.root_cause_routes import router as root_cause_router
 from .routes.cognitive_routes import router as cognitive_router
+from .routes.auth_routes import router as auth_router
 
 # AI Intelligence Layer routers
 from .ai.ollama import ollama_router
@@ -51,8 +54,27 @@ from .simulation import simulation_router
 from .prescriptive import prescriptive_router
 from .autonomy import autonomy_router
 
-# Create database tables
-Base.metadata.create_all(bind=engine)
+# Security configuration - validates JWT secrets on startup
+from .core.security import get_security_config
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Application lifespan handler."""
+    # Startup: Validate security config (fails if secrets missing)
+    try:
+        get_security_config()
+    except ValueError as e:
+        raise RuntimeError(f"Security configuration error: {e}")
+    
+    # Create database tables
+    Base.metadata.create_all(bind=engine)
+    
+    yield
+    
+    # Shutdown: cleanup if needed
+    pass
+
 
 # Rate limiter
 limiter = Limiter(key_func=get_remote_address)
@@ -61,6 +83,7 @@ app = FastAPI(
     title="GCDTP Health Engine",
     description="Asset, Sensor, Measurement, Threshold, Event & Health Engine for GCDTP",
     version="1.0.0",
+    lifespan=lifespan,
 )
 
 # Rate limit exceeded handler
@@ -71,16 +94,20 @@ async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
         content={"detail": f"Rate limit exceeded: {exc.detail}"}
     )
 
-# CORS middleware
+# Get security config for CORS settings
+security_config = get_security_config()
+
+# CORS middleware with configured origins (no wildcard)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=security_config.allowed_origins,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+    allow_headers=["Authorization", "Content-Type"],
 )
 
 # Include routers
+app.include_router(auth_router)
 app.include_router(asset_router)
 app.include_router(sensor_router)
 app.include_router(measurement_router)

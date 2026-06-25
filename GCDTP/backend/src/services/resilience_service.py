@@ -17,7 +17,7 @@ from typing import List, Dict, Optional, Tuple
 from datetime import datetime
 import uuid
 
-from backend.src.models import (
+from ..models import (
     Asset,
     AssetHealth,
     AssetRelationship,
@@ -26,7 +26,7 @@ from backend.src.models import (
     ResilienceAnalysis,
     ResilienceRecommendation,
 )
-from backend.src.schemas.resilience import (
+from ..schemas.resilience import (
     RecommendationPriority,
     RecommendationType,
     get_criticality_level,

@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 
 from ..models.asset import Asset
 from ..models.asset_relationship import AssetRelationship, RelationshipType
-from ..models.asset_health import AssetHealth
+from ..models.health import AssetHealth
 from ..models.scenario import Scenario
 from ..models.scenario_result import ScenarioResult
 from ..models.recovery_simulation import RecoverySimulation, RecoveryType, RiskLevel

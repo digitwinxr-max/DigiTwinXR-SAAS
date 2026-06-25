@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import and_
 
 from ..models.asset_relationship import AssetRelationship, RelationshipType
-from ..models.asset_health import AssetHealth
+from ..models.health import AssetHealth
 from ..models.asset_health_dependency import (
     AssetHealthDependency,
     RelationshipType as ModelRelationshipType,
