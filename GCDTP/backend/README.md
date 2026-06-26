@@ -552,3 +552,142 @@ Simulate failures and recoveries without affecting live data.
 ```bash
 pytest tests/
 ```
+
+## Resilience Analysis
+
+### Resilience Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | /resilience/analyze/{id} | Analyze single asset |
+| POST | /resilience/analyze-network | Analyze all assets |
+| GET | /resilience/asset/{id} | Get existing analysis |
+| GET | /resilience/top-critical | Get top critical assets |
+| GET | /resilience/network | Get network metrics |
+| GET | /resilience/recommendations/{id} | Get recommendations |
+
+### Criticality Formula
+
+```
+criticality = (upstream × 0.3) + (downstream × 0.4) + (dependency × 0.2) + (events × 0.1)
+```
+
+### Resilience Formula
+
+```
+resilience = 100 - dependency_penalty - propagation_penalty - event_penalty
+```
+
+### Single Point of Failure
+
+An asset is SPOF if removing it disconnects more than one downstream branch.
+
+### Isolation
+
+- Reads from: assets, asset_relationships, asset_health_dependencies, events
+- Writes to: resilience_analyses, resilience_recommendations
+- Never touches: events (live), propagated_events, asset_health
+
+## Network Topology Engine
+
+### Module Structure
+
+```
+backend/src/services/topology/
+├── topology_types.py      # Core data types
+├── graph_builder.py       # Build graphs from assets
+├── flow_models.py         # Physics abstraction
+├── topology_engine.py     # Main engine
+└── topology_validator.py  # Validation
+```
+
+### Key Features
+
+- **Multi-domain support**: electrical, water, transport
+- **Flow simulation**: capacity, resistance, utilization
+- **Path tracing**: BFS/DFS, shortest path, all paths
+- **Graph validation**: orphans, connectivity, consistency
+
+### Infrastructure Layers
+
+| Layer | Flow Type | Load Metric |
+|-------|-----------|-------------|
+| electrical | power | MW |
+| water | water | m³/h |
+| transport | traffic | vehicles/h |
+
+### Example Usage
+
+```python
+from backend.src.services.topology import TopologyEngine
+
+engine = TopologyEngine()
+graph = engine.build_topology(raw_assets)
+
+# Find path
+path = engine.find_path(graph, "source", "target")
+
+# Simulate flow
+result = engine.simulate_flow(graph, "source", initial_load=100.0)
+```
+
+### Flow Status
+
+- **STABLE**: utilization < 0.8
+- **DEGRADED**: 0.8 <= utilization < 1.0
+- **OVERLOADED**: utilization >= 1.0
+
+## Routing, Flow, and Resilience Engines
+
+### Module Structure
+
+```
+backend/src/services/routing/
+├── routing_types.py      # Route, FlowAllocation, RoutingResult
+├── cost_models.py        # Domain-specific cost calculations
+├── routing_engine.py     # Dijkstra-based path discovery
+├── flow_engine.py        # Load distribution across routes
+└── resilience_engine.py  # Network robustness measurement
+```
+
+### Three Independent Engines
+
+| Engine | Responsibility | Key Methods |
+|--------|----------------|-------------|
+| RoutingEngine | Path discovery | find_shortest_path, find_all_paths |
+| FlowEngine | Load distribution | allocate_flow, detect_overload |
+| ResilienceEngine | Network stability | compute_resilience_score |
+
+### Cost Model Domains
+
+| Domain | Factor | Description |
+|--------|--------|-------------|
+| electrical | 1.2 | Power transmission costs |
+| water | 1.0 | Baseline water costs |
+| transport | 0.8 | Traffic flows freely |
+
+### Example Usage
+
+```python
+from backend.src.services.routing import (
+    RoutingEngine, FlowEngine, ResilienceEngine
+)
+
+# Find route
+routing = RoutingEngine()
+route = routing.find_shortest_path(graph, "source", "dest")
+
+# Allocate flow
+flow = FlowEngine()
+dist = flow.allocate_flow(route, total_load=100.0)
+
+# Measure resilience
+resilience = ResilienceEngine()
+metrics = resilience.compute_resilience_score(graph, route)
+```
+
+### Allocation Strategies
+
+- **equal**: Distribute load equally across routes
+- **capacity**: Proportional to route capacity
+- **cost**: Inverse proportional to route cost

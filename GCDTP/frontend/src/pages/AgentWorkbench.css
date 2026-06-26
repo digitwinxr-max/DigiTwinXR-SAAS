@@ -1,0 +1,117 @@
+/**
+ * Agent Workbench Styles
+ */
+
+.agent-workbench {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.workbench-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-left h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.approval-badge {
+  padding: 0.25rem 0.75rem;
+  background-color: #fff3e0;
+  color: #e65100;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.create-task-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #2196f3;
+  color: white;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.create-task-btn:hover:not(:disabled) {
+  background-color: #1976d2;
+}
+
+.create-task-btn:disabled {
+  background-color: #bdbdbd;
+  cursor: not-allowed;
+}
+
+.workbench-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr 400px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.workbench-sidebar {
+  background-color: #fff;
+  overflow-y: auto;
+}
+
+.left-panel {
+  border-right: 1px solid #e0e0e0;
+}
+
+.right-panel {
+  border-left: 1px solid #e0e0e0;
+}
+
+.workbench-main {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tab {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  background: none;
+  font-size: 0.875rem;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tab:hover {
+  background-color: #f5f5f5;
+}
+
+.tab.active {
+  color: #2196f3;
+  border-bottom: 2px solid #2196f3;
+}
+
+.center-content {
+  flex: 1;
+  overflow-y: auto;
+}

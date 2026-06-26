@@ -120,7 +120,7 @@ export async function getContributors(assetId) {
  * @returns {Promise<Object>} Network health
  */
 export async function getNetworkHealth() {
-  const response = await fetch(`${API_BASE_URL}/health/network`);
+  const response = await fetch(`${API_BASE_URL}/network/summary`);
   
   if (!response.ok) {
     throw new Error(`Failed to fetch network health: ${response.statusText}`);

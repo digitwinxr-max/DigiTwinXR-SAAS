@@ -1,8 +1,10 @@
 """Database configuration and connection management."""
 import os
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+
+# Import Base from models.base to ensure all models use the same Base
+from ..models.base import Base
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
@@ -11,7 +13,6 @@ DATABASE_URL = os.getenv(
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-Base = declarative_base()
 
 
 def get_db():

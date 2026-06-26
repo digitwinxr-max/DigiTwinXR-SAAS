@@ -1,5 +1,11 @@
 """GCDTP Backend API - Asset, Sensor, Measurement, Threshold, Event & Health Engine."""
-from fastapi import FastAPI
+from contextlib import asynccontextmanager
+
+from fastapi import FastAPI, Request
+from slowapi import Limiter
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from .database.config import engine, Base
@@ -14,26 +20,94 @@ from .routes.propagation_routes import router as propagation_router
 from .routes.network_health_routes import router as network_health_router
 from .routes.scenario_routes import router as scenario_router
 from .routes.recovery_routes import router as recovery_router
+from .routes.resilience_routes import router as resilience_router
+from .routes.semantic_routes import router as semantic_router
+from .routes.timeline_routes import router as timeline_router
+from .routes.logbook_routes import router as logbook_router
+from .routes.knowledge_routes import router as knowledge_router
+from .routes.copilot_routes import router as copilot_router
+from .routes.rag_routes import router as rag_router
+from .routes.agent_routes import router as agent_router
+from .routes.predictive_routes import router as predictive_router
+from .routes.root_cause_routes import router as root_cause_router
+from .routes.cognitive_routes import router as cognitive_router
+from .routes.auth_routes import router as auth_router
 
-# Create database tables
-Base.metadata.create_all(bind=engine)
+# AI Intelligence Layer routers
+from .ai.ollama import ollama_router
+from .ai.langgraph import langgraph_router
+from .ai.memory import context_router
+from .ai.reasoning import reasoning_router
+from .ai.copilot import copilot_router as copilot_ai_router
+
+# Video Intelligence Layer routers
+from .video.frigate import frigate_router
+from .video.opencv import opencv_router
+from .video.yolo import yolo_router
+from .video.deepstream import deepstream_router
+
+# Autonomous Cognitive Twin routers
+from .agents import agents_router
+from .reasoning import reasoning_router
+from .learning import learning_router
+from .simulation import simulation_router
+from .prescriptive import prescriptive_router
+from .autonomy import autonomy_router
+
+# Security configuration - validates JWT secrets on startup
+from .core.security import get_security_config
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Application lifespan handler."""
+    # Startup: Validate security config (fails if secrets missing)
+    try:
+        get_security_config()
+    except ValueError as e:
+        raise RuntimeError(f"Security configuration error: {e}")
+    
+    # Create database tables
+    Base.metadata.create_all(bind=engine)
+    
+    yield
+    
+    # Shutdown: cleanup if needed
+    pass
+
+
+# Rate limiter
+limiter = Limiter(key_func=get_remote_address)
 
 app = FastAPI(
     title="GCDTP Health Engine",
     description="Asset, Sensor, Measurement, Threshold, Event & Health Engine for GCDTP",
     version="1.0.0",
+    lifespan=lifespan,
 )
 
-# CORS middleware
+# Rate limit exceeded handler
+@app.exception_handler(RateLimitExceeded)
+async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
+    return JSONResponse(
+        status_code=429,
+        content={"detail": f"Rate limit exceeded: {exc.detail}"}
+    )
+
+# Get security config for CORS settings
+security_config = get_security_config()
+
+# CORS middleware with configured origins (no wildcard)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=security_config.allowed_origins,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+    allow_headers=["Authorization", "Content-Type"],
 )
 
 # Include routers
+app.include_router(auth_router)
 app.include_router(asset_router)
 app.include_router(sensor_router)
 app.include_router(measurement_router)
@@ -45,6 +119,37 @@ app.include_router(propagation_router)
 app.include_router(network_health_router)
 app.include_router(scenario_router)
 app.include_router(recovery_router)
+app.include_router(resilience_router)
+app.include_router(semantic_router)
+app.include_router(timeline_router)
+app.include_router(logbook_router)
+app.include_router(knowledge_router)
+app.include_router(copilot_router)
+app.include_router(rag_router)
+app.include_router(agent_router)
+app.include_router(predictive_router)
+app.include_router(root_cause_router)
+app.include_router(cognitive_router)
+
+# AI Intelligence Layer routers
+app.include_router(ollama_router)
+app.include_router(langgraph_router)
+app.include_router(context_router)
+app.include_router(reasoning_router)
+app.include_router(copilot_ai_router)
+
+# Video Intelligence Layer routers
+app.include_router(frigate_router)
+app.include_router(opencv_router)
+app.include_router(yolo_router)
+app.include_router(deepstream_router)
+
+# Autonomous Cognitive Twin routers
+app.include_router(agents_router)
+app.include_router(learning_router)
+app.include_router(simulation_router)
+app.include_router(prescriptive_router)
+app.include_router(autonomy_router)
 
 
 @app.get("/health")

@@ -38,6 +38,38 @@ Each ADR should follow this structure:
 | 0018 | Dependency-Aware Health Propagation | Accepted | 2026-06-17 |
 | 0019 | Scenario Simulation Engine | Accepted | 2026-06-17 |
 | 0020 | Recovery Simulation Engine | Accepted | 2026-06-17 |
+| 0021 | Resilience Analysis Engine | Accepted | 2026-06-17 |
+| 0022 | Network Topology Engine | Accepted | 2026-06-17 |
+| 0023 | Routing, Flow, and Resilience Engines | Accepted | 2026-06-17 |
+| 0024 | Extensible Simulation Architecture | Accepted | 2026-06-17 |
+| 0025 | Operational Timeline Engine | Accepted | 2026-06-17 |
+| 0026 | Work Order Engine | Accepted | 2026-06-17 |
+| 0027 | Document Management Engine | Accepted | 2026-06-17 |
+| 0028 | Identity & Access Management | Accepted | 2026-06-17 |
+| 0029 | Cesium 3D Visualization Layer | Accepted | 2026-06-17 |
+| 0030 | Node-RED Integration Layer | Accepted | 2026-06-17 |
+| 0031 | EMQX MQTT Integration Layer | Accepted | 2026-06-17 |
+| 0032 | GeoServer Integration Layer | Accepted | 2026-06-17 |
+| 0033 | Graph Intelligence Layer (Neo4j) | Accepted | 2026-06-17 |
+| 0034 | Semantic Ontology Layer | Accepted | 2026-06-17 |
+| 0035 | Architecture Review & Hardening | Accepted | 2026-06-17 |
+| 0036 | Observability & Diagnostics Layer | Accepted | 2026-06-17 |
+| 0037 | Performance & Scaling Layer | Accepted | 2026-06-17 |
+| 0038 | Deployment & DevOps Layer | Accepted | 2026-06-17 |
+| 0039 | Enterprise Packaging Layer | Accepted | 2026-06-17 |
+| 0040 | Production Readiness Audit & Certification | Accepted | 2026-06-17 |
+| 0041 | Object Storage Layer (MinIO) | Accepted | 2026-06-17 |
+| 0042 | Advanced Geospatial Analytics Layer | Accepted | 2026-06-17 |
+| 0043 | TerriaJS Federation Layer | Accepted | 2026-06-17 |
+| 0044 | MapLibre Vector Tile Layer | Accepted | 2026-06-17 |
+| 0045 | Kepler.gl Analytics Layer | Accepted | 2026-06-17 |
+| 0046 | Unified Semantic Layer | Accepted | 2026-06-17 |
+| 0047 | Timeline Replay Engine | Accepted | 2026-06-17 |
+| 0048 | Digital Logbook Engine | Accepted | 2026-06-17 |
+| 0049 | Knowledge Repository Engine | Accepted | 2026-06-17 |
+| 0050 | Cognitive Copilot Foundation | Accepted | 2026-06-17 |
+| 0051 | RAG Engine | Accepted | 2026-06-17 |
+| 0052 | AI Agent Framework | Accepted | 2026-06-17 |
 
 ---
 

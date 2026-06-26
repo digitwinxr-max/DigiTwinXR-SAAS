@@ -542,3 +542,35 @@ All significant architectural decisions are documented in the `adr/` folder:
 - ADR-0018: Dependency-Aware Health Propagation
 - ADR-0019: Scenario Simulation Engine
 - ADR-0020: Recovery Simulation Engine
+- ADR-0021: Resilience Analysis Engine
+- ADR-0022: Network Topology Engine
+- ADR-0023: Routing, Flow, and Resilience Engines
+- ADR-0024: Extensible Simulation Architecture
+- ADR-0025: Operational Timeline Engine
+- ADR-0026: Work Order Engine
+- ADR-0027: Document Management Engine
+- ADR-0028: Identity & Access Management
+- ADR-0029: Cesium 3D Visualization Layer
+- ADR-0030: Node-RED Integration Layer
+- ADR-0031: EMQX MQTT Integration Layer
+- ADR-0032: GeoServer Integration Layer
+- ADR-0033: Graph Intelligence Layer (Neo4j)
+- ADR-0034: Semantic Ontology Layer
+- ADR-0035: Architecture Review & Hardening
+- ADR-0036: Observability & Diagnostics Layer
+- ADR-0037: Performance & Scaling Layer
+- ADR-0038: Deployment & DevOps Layer
+- ADR-0039: Enterprise Packaging Layer
+- ADR-0040: Production Readiness Audit & Certification
+- ADR-0041: Object Storage Layer (MinIO)
+- ADR-0042: Advanced Geospatial Analytics Layer
+- ADR-0043: TerriaJS Federation Layer
+- ADR-0044: MapLibre Vector Tile Layer
+- ADR-0045: Kepler.gl Analytics Layer
+- ADR-0046: Unified Semantic Layer
+- ADR-0047: Timeline Replay Engine
+- ADR-0048: Digital Logbook Engine
+- ADR-0049: Knowledge Repository Engine
+- ADR-0050: Cognitive Copilot Foundation
+- ADR-0051: RAG Engine
+- ADR-0052: AI Agent Framework

@@ -1,10 +1,10 @@
 """Measurement SQLAlchemy model."""
 import uuid
-from sqlalchemy import Column, String, Float, DateTime
+from sqlalchemy import Column, String, Float, DateTime, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
-from ..database.config import Base
+from .base import Base
 
 
 class Measurement(Base):
@@ -12,7 +12,7 @@ class Measurement(Base):
     __tablename__ = "measurements"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    sensor_id = Column(UUID(as_uuid=True), nullable=False)
+    sensor_id = Column(UUID(as_uuid=True), ForeignKey("sensors.id"), nullable=False)
     timestamp = Column(DateTime(timezone=True), nullable=False, default=func.now())
     value = Column(Float, nullable=False)
     quality = Column(String(20), nullable=False, default="good")

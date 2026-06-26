@@ -12,6 +12,7 @@ from ..schemas.sensor import (
     SensorResponse,
     SensorListResponse,
 )
+from ..schemas.measurement import MeasurementListResponse
 from ..services.sensor_service import SensorService
 
 router = APIRouter(prefix="/sensors", tags=["sensors"])

@@ -4,7 +4,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
-from ..database import get_db
+from ..database.config import get_db
 from ..services.asset_relationship_service import AssetRelationshipService
 from ..schemas.asset_relationship import (
     AssetRelationshipCreate,
@@ -48,7 +48,7 @@ def create_relationship(
         
         # Get asset names for response
         from ..services.asset_service import AssetService
-        asset_service = AssetService(db)
+        asset_service = AssetService(service.db)
         
         parent = asset_service.get_asset(relationship.parent_asset_id)
         child = asset_service.get_asset(relationship.child_asset_id)
@@ -90,7 +90,7 @@ def list_relationships(
     
     # Get asset names
     from ..services.asset_service import AssetService
-    asset_service = AssetService(db)
+    asset_service = AssetService(service.db)
     
     items = []
     for rel in relationships:
@@ -201,7 +201,7 @@ def get_relationship(
         raise HTTPException(status_code=404, detail="Relationship not found")
     
     from ..services.asset_service import AssetService
-    asset_service = AssetService(db)
+    asset_service = AssetService(service.db)
     
     parent = asset_service.get_asset(relationship.parent_asset_id)
     child = asset_service.get_asset(relationship.child_asset_id)
